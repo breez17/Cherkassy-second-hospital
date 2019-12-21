@@ -1,0 +1,29 @@
+<%= form_with(model: pacient, local: true) do |form| %>
+  <% if pacient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
+
+      <ul>
+      <% pacient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+
+    <%= form.label :Name %>
+    <%= form.text_field :Name %>
+
+    <%= form.label :Surname %>
+    <%= form.text_field :Surname %>
+
+    <%= form.label :Disease %>
+    <%= form.text_field :Disease %>
+
+    <%= form.label :branch_id %>
+    <%= form.collection_select :branch_id, Branch.all, :id, :Type %>
+  </div>
+<% end %>

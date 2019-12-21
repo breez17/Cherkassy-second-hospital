@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Branches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Doctor</th>
+      <th>Branches</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @branches.each do |branch| %>
+      <tr>
+        <td><%= branch.doctor.Name %></td>
+        <td><%= branch.Type %></td>
+        <td><%= link_to 'Show', branch %></td>
+        <td><%= link_to 'Edit', edit_branch_path(branch) %></td>
+        <td><%= link_to 'Destroy', branch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<a href="/pacients">To Patients &#10095</a>
+<br />
+<br />
+<a href="/doctors">To Doctors &#10095</a>
+<br />
+<br />
+<%= link_to 'New Branch', new_branch_path %>

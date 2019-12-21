@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pacients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Disease</th>
+      <th>Branch</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pacients.each do |pacient| %>
+      <tr>
+        <td><%= pacient.Name %></td>
+        <td><%= pacient.Surname %></td>
+        <td><%= pacient.Disease %></td>
+        <% if  pacient.branch %>
+          <td><%= pacient.branch.Type%></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= link_to 'Show', pacient %></td>
+        <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
+        <td><%= link_to 'Destroy', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<a href="/doctors">To Doctors &#10095</a>
+<br />
+<br />
+<a href="/branches">To Branches &#10095</a>
+<br />
+<br />
+<%= link_to 'New Pacient', new_pacient_path %>
